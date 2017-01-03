@@ -55,8 +55,6 @@ public class MainActivity extends AppCompatActivity implements NetworkStateRecei
     // Constants
     // ----------------------------------------------------------------------
 
-    private static final String URL = "http://homeboard.me";
-
     private static final String EXTERNAL_APP_URL_PATTERN = "http://download.pattern.com";
 
     // ----------------------------------------------------------------------
@@ -109,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements NetworkStateRecei
             cookieManager.setAcceptThirdPartyCookies(webView, true);
         }
 
-        webView.loadUrl(URL);
+        webView.loadUrl(getResources().getString(R.string.app_url));
 
         mContainer = (CoordinatorLayout) findViewById(R.id.webview_frame);
         mContext = this.getApplicationContext();
