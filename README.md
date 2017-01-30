@@ -1,16 +1,44 @@
-# Web page as Android App
+Mobile Apps wrapper
+===================
 
-### Description
+Description:
+-------------
 
-Generic template to run any Web Page as Android application.
+Generic template to run any Web Page as Android application. 
 
-### How to use
+How to modify:
+-------------
 
-1. Clone the project
-2. Modify strings.xml
- a. app_name
- b. app_url
-3. Modify build.gradle: defaultConfig -> applicationId
-4. Add image icons for your app. (Default is icon.png)
-5. Compile and build the apk
-6. Enjoy !
+- app/build.gradle
+	- **applicationId:** identifies the package name on Android (demo apks add .demo to this property)
+- app/src/main/res/values/strings.xml
+	- **app_name:** it's the application name that will be shown on the icon
+	- **app_url:** it's the URL that will be loaded by the WebView
+- app/src/main/res/mipmap-{size} => Is the image that will be used as icon
+
+Building and compiling apks:
+-------------
+
+Using Android Studio
+
+1) Build -> Generate Signed APK...
+2) Select or create a keystore
+3) Make sure that build type is in release if you are generating release apks or debug otherwise
+4) Using a terminal go to the directory that contains the apk and run the zipalign command:
+
+- zipalign 4 {APK_NAME}.apk {APK_NAME}-release.apk
+
+5) In the folder will be the compiled apk ready to be distributed.
+
+Future improvements:
+-------------
+
+1) Add support to easily manage multiple webpages with only one app
+
+Other notes:
+-------------
+
+1) How to add the zipalign command ?
+
+a) Zipalign is aa executable that will be found in Android SDK (.../Android/sdk/build-tools/{version}/)
+b) Add that folder to the PATH
